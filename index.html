@@ -5,18 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    
+    <!-- Style for buttons, sidebar and overlay -->
     <link rel="stylesheet" href="style.css">
+    <!-- Import library for model viewer -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+    <!-- Import helper functions -->
     <script type="module" src="helper.js"></script>
 </head>
 <body>
+    <div id="hotspot-side"></div>
 
-    <model-viewer id="sarahs-haus" src="SarahTest3textures.glb" alt="3D Portfolio Sarah's Haus" camera-controls touch-action="none" camera-orbit="-8.142746deg 68.967deg 0.6179899m" camera-target="-0.003m 0.0722m 0.0391m" field-of-view="45deg" min-field-of-view="25deg" max-field-of-view="45deg" interpolation-decay="200" min-camera-orbit="auto auto 5%" poster="../../assets/SketchfabModels/ThorAndTheMidgardSerpent.webp" tone-mapping="aces" ar>
-        <button class="view-button" slot="hotspot-0" data-position="-0.0569m 0.0969m -0.1398m" data-normal="-0.5829775m 0.2863482m -0.7603565m" data-orbit="-50.94862deg 84.56856deg 0.06545582m" data-target="-0.04384604m 0.07348397m -0.1213202m">
-          Test1
-        </button>      
+    <!-- model viewer with model, room buttons and information buttons -->
+    <model-viewer   id="sarahs-haus"
+                    src="SarahTest3textures.glb" 
+                    camera-controls tone-mapping="neutral" 
+                    poster="poster.webp" 
+                    shadow-intensity="1.85" 
+                    exposure="0.65" 
+                    shadow-softness="1"
+                    field-of-view="45deg"
+                    min-field-of-view="25deg" 
+                    max-field-of-view="45deg" 
+                    interpolation-decay="200" 
+                    min-camera-orbit="auto auto 5%">
+        <!-- room buttons placed inside the model
+        on click move to the data-target position and take the local position of data orbit
+        view button should hide all other but the corrosponding information-buttons--> 
+        <button class="view-button"  
+                slot="hotspot-1" 
+                data-position="5.236324275636166m 7.916932557611619m -6.322623889191679m" 
+                data-normal="0.766044443m -0.173648178m -0.642787610m" 
+                data-visibility-attribute="visible"
+                data-orbit="180deg 80deg 7m" 
+                data-target="5.2m 7.9m -6.3m">
+            1</button>
+        <div id="room-1" class="hotspot-container"></div>
+        <button class="view-button"  
+                slot="hotspot-2" 
+                data-position="-1.0963967732565436m 7.916288081308232m -6.393535749941938m" 
+                data-normal="0m -0.173648178m -0.984807753m" 
+                data-visibility-attribute="visible"
+                data-orbit="180deg 80deg 7m" 
+                data-target="-1.1m 7.9m -6.4m">
+            2</button>
+        <button class="view-button"  
+                slot="hotspot-3"
+                data-position="0.02775589252264643m 4.475654363632202m -6.476399143300341m" 
+                data-normal="0m -0.258819045m -0.965925826m" 
+                data-visibility-attribute="visible"
+                data-orbit="180deg 75deg 7m" 
+                data-target="0m 4.5m -6.5m">
+            3</button>
+        <button class="view-button"  
+                slot="hotspot-4" 
+                data-position="-4.268101913765271m 4.3920329511279212m -6.523958637943631m" 
+                data-normal="-0.642787610m -0.258819045m -0.766044443m" 
+                data-visibility-attribute="visible"
+                data-orbit="180deg 75deg 7m" 
+                data-target="-4.3m 4.4m -6.5m">
+            4</button>
+        <button class="view-button"  
+                slot="hotspot-5" 
+                data-position="5.161625716120152m 4.4601400594882676m -6.480447160917892m" 
+                data-normal="0.766044443m -0.258819045m -0.642787610m" 
+                data-visibility-attribute="visible"
+                data-orbit="180deg 75deg 7m" 
+                data-target="5.2m 4.5m -6.5m">
+            5</button>
+        <button class="view-button"  
+                slot="hotspot-6" 
+                data-position="5.008252133167844m 7.933713534621662m 5.976859689461875m" 
+                data-normal="0.707106781m -0.173648178m 0.707106781m" 
+                data-visibility-attribute="visible"
+                data-orbit="0deg 80deg 7m" 
+                data-target="5m 7.9m 6m">
+            6</button>
+        <button class="view-button"  
+                slot="hotspot-7" 
+                data-position="-1.119091379534228m 7.923051437741123m 6.086084288536002m" 
+                data-normal="0m -0.173648178m 0.984807753m" 
+                data-visibility-attribute="visible"
+                data-orbit="0deg 80deg 7m" 
+                data-target="-1.1m 7.9m 6.1m">
+            7</button>
+        <button class="view-button"  
+                slot="hotspot-8" 
+                data-position="2.3508562935009203m 3.930873990058899m 6.028137522599129m" 
+                data-normal="0.342020143m -0.258819045m 0.939692621m" 
+                data-visibility-attribute="visible"
+                data-orbit="0deg 75deg 7m" 
+                data-target="2.4m 3.9m 6m">
+            8</button>
+        <button class="view-button"  
+                slot="hotspot-9" 
+                data-position="-3.6555645845936873m 3.9308743561279993m 5.941277910735158m" 
+                data-normal="-0.342020143m -0.258819045m 0.939692621m" 
+                data-visibility-attribute="visible"
+                data-orbit="0deg 75deg 7m" 
+                data-target="-3.7m 3.9m 5.9m">
+            9</button> 
     </model-viewer>
 
-
+    <div id="overlay-test_1" class="overlay"></div>
+    <div id="overlay-test_2" class="overlay"></div>
 </body>
 </html>
+
+//template sidebar für räume kein overlay buttons für raume
+
+//template button zum öffnen von Informationen HTML, Container Overlay, Button zum schließen
+
+//weiche mobil meldung auf desktop angucken template overlay 
+
+//custom lade animation video einfügen
