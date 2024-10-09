@@ -11,7 +11,8 @@
     <!-- Import library for model viewer -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
     <!-- Import helper functions -->
-    <script type="module" src="helper.js"></script>
+    <script src="informations.js"></script>
+    <script src="helper.js"></script>
 </head>
 <body>
     <div id="hotspot-side"></div>
@@ -50,7 +51,8 @@
                 data-visibility-attribute="visible"
                 data-orbit="180deg 80deg 7m" 
                 data-target="5.2m 7.9m -6.3m"
-                data-room="1">
+                data-room="1"
+                data-info="1">
             Info 1</button>
         <button class="info-button"  
                 slot="hotspot-1-info-2" 
@@ -59,7 +61,8 @@
                 data-visibility-attribute="visible"
                 data-orbit="180deg 80deg 7m" 
                 data-target="5.2m 7.9m -6.3m"
-                data-room="1">
+                data-room="1"
+                data-info="2">
             Info 2</button>
             
         <!-- Room 2 --> 
@@ -81,7 +84,8 @@
                 data-visibility-attribute="visible"
                 data-orbit="180deg 80deg 7m" 
                 data-target="-1.1m 7.9m -6.4m"
-                data-room="2">
+                data-room="2"
+                data-info="1">
             Info 1</button>
         <button class="info-button"  
                 slot="hotspot-2-info-2" 
@@ -90,7 +94,8 @@
                 data-visibility-attribute="visible"
                 data-orbit="180deg 80deg 7m" 
                 data-target="-1.1m 7.9m -6.4m"
-                data-room="2">
+                data-room="2"
+                data-info="2">
             Info 2</button>
 
         <!-- Room 3 -->
@@ -110,7 +115,8 @@
                 data-visibility-attribute="visible"
                 data-orbit="180deg 75deg 7m" 
                 data-target="0m 4.5m -6.5m"
-                data-room="3">
+                data-room="3"
+                data-info="3">
             Info 1</button>
         <button class="info-button"  
                 slot="hotspot-3-info-2" 
@@ -119,7 +125,8 @@
                 data-visibility-attribute="visible"
                 data-orbit="180deg 75deg 7m" 
                 data-target="0m 4.5m -6.5m"
-                data-room="3">
+                data-room="3"
+                data-info="3">
             Info 2</button>
 
         <!-- Room 4 -->
@@ -139,7 +146,8 @@
                 data-visibility-attribute="visible"
                 data-orbit="180deg 75deg 7m" 
                 data-target="-4.3m 4.4m -6.5m"
-                data-room="4">
+                data-room="4"
+                data-info="4">
             Info 1</button>
         <button class="info-button"  
                 slot="hotspot-4-info-2" 
@@ -148,7 +156,8 @@
                 data-visibility-attribute="visible"
                 data-orbit="180deg 75deg 7m" 
                 data-target="-4.3m 4.4m -6.5m"
-                data-room="4">
+                data-room="4"
+                data-info="4">
             Info 2</button>
 
         <!-- Room 5 -->
@@ -168,7 +177,8 @@
                 data-visibility-attribute="visible"
                 data-orbit="180deg 75deg 7m" 
                 data-target="5.2m 4.5m -6.5m"
-                data-room="5">
+                data-room="5"
+                data-info="5">
             Info 1</button>
         <button class="info-button"  
                 slot="hotspot-5-info-2" 
@@ -177,7 +187,8 @@
                 data-visibility-attribute="visible"
                 data-orbit="180deg 75deg 7m" 
                 data-target="5.2m 4.5m -6.5m"
-                data-room="5">
+                data-room="5"
+                data-info="5">
                 Info 2</button>
 
         <!-- Room 6 -->
@@ -197,7 +208,8 @@
                 data-visibility-attribute="visible"
                 data-orbit="0deg 80deg 7m" 
                 data-target="5m 7.9m 6m"
-                data-room="6">
+                data-room="6"
+                data-info="6">
             Info 1</button>
         <button class="info-button"  
                 slot="hotspot-6-info-2" 
@@ -206,7 +218,8 @@
                 data-visibility-attribute="visible"
                 data-orbit="0deg 80deg 7m" 
                 data-target="5m 7.9m 6m"
-                data-room="6">
+                data-room="6"
+                data-info="6">
             Info 2</button>
 
         <!-- Room 7 -->
@@ -226,7 +239,8 @@
                 data-visibility-attribute="visible"
                 data-orbit="0deg 80deg 7m" 
                 data-target="-1.1m 7.9m 6.1m"
-                data-room="7">
+                data-room="7"
+                data-info="7">
             Info 1</button>
         <button class="info-button"  
                 slot="hotspot-7-info-2" 
@@ -255,7 +269,8 @@
                 data-visibility-attribute="visible"
                 data-orbit="0deg 75deg 7m" 
                 data-target="2.4m 3.9m 6m"
-                data-room="8">
+                data-room="8"
+                data-info="8">
             Info 1</button>
         <button class="info-button"  
                 slot="hotspot-8-info-2" 
@@ -264,7 +279,8 @@
                 data-visibility-attribute="visible"
                 data-orbit="0deg 75deg 7m" 
                 data-target="2.4m 3.9m 6m"
-                data-room="8">
+                data-room="8"
+                data-info="8">
             Info 2</button>
 
         <!-- Room 9 -->
@@ -284,7 +300,8 @@
                 data-visibility-attribute="visible"
                 data-orbit="0deg 75deg 7m" 
                 data-target="-3.7m 3.9m 5.9m"
-                data-room="9">
+                data-room="9"
+                data-info="9">
             Info 1</button>
         <button class="info-button"  
                 slot="hotspot-9-info-2" 
@@ -293,10 +310,10 @@
                 data-visibility-attribute="visible"
                 data-orbit="0deg 75deg 7m" 
                 data-target="-3.7m 3.9m 5.9m"
-                data-room="9">
+                data-room="9"
+                data-info="9">
             Info 2</button>
     </model-viewer>
-
 
     
     <div id="room-sidebar" class="sidebar">
@@ -314,16 +331,21 @@
 
     <div id="overlay-test_1" class="overlay"></div>
     <div id="overlay-test_2" class="overlay"></div>
+
+    <div id="info-window" class="side-info-window">
+        <div class="info-window-content">
+            <button id="close-info-window">&times;</button>
+            <h2 id="info-window-title"></h2>
+            <div id="info-window-content"></div>
+        </div>
+    </div>
 </body>
 </html>
 
-//template sidebar für räume kein overlay buttons für raume //Che
+//template sidebar für räume kein overlay buttons für raume //Check!
 
 //template button zum öffnen von Informationen HTML, Container Overlay, Button zum schließen
 
 //weiche mobil meldung auf desktop angucken template overlay 
 
-//custom lade animation video einfügen
-//custom lade animation video einfügen
-//custom lade animation video einfügen
 //custom lade animation video einfügen
