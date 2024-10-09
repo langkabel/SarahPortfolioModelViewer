@@ -32,14 +32,37 @@
         <!-- room buttons placed inside the model
         on click move to the data-target position and take the local position of data orbit
         view button should hide all other but the corrosponding information-buttons--> 
+
+        <!-- Room 1 -->
         <button class="view-button"  
                 slot="hotspot-1" 
                 data-position="5.236324275636166m 7.916932557611619m -6.322623889191679m" 
                 data-normal="0.766044443m -0.173648178m -0.642787610m" 
                 data-visibility-attribute="visible"
                 data-orbit="180deg 80deg 7m" 
-                data-target="5.2m 7.9m -6.3m">
+                data-target="5.2m 7.9m -6.3m"
+                data-room="1">
             1</button>
+        <button class="info-button"  
+                slot="hotspot-1-info-1" 
+                data-position="6.236324275636166m 7.916932557611619m -6.322623889191679m" 
+                data-normal="0.766044443m -0.173648178m -0.642787610m" 
+                data-visibility-attribute="visible"
+                data-orbit="180deg 80deg 7m" 
+                data-target="5.2m 7.9m -6.3m"
+                data-room="1">
+            Info 1</button>
+        <button class="info-button"  
+                slot="hotspot-1-info-2" 
+                data-position="4.236324275636166m 7.916932557611619m -6.322623889191679m" 
+                data-normal="0.766044443m -0.173648178m -0.642787610m" 
+                data-visibility-attribute="visible"
+                data-orbit="180deg 80deg 7m" 
+                data-target="5.2m 7.9m -6.3m"
+                data-room="1">
+            Info 2</button>
+            
+        <!-- Room 2 --> 
         <div id="room-1" class="hotspot-container"></div>
         <button class="view-button"  
                 slot="hotspot-2" 
@@ -47,66 +70,235 @@
                 data-normal="0m -0.173648178m -0.984807753m" 
                 data-visibility-attribute="visible"
                 data-orbit="180deg 80deg 7m" 
-                data-target="-1.1m 7.9m -6.4m">
+                data-target="-1.1m 7.9m -6.4m"
+                data-room="2">
             2</button>
+
+        <button class="info-button"  
+                slot="hotspot-2-info-1" 
+                data-position="-0.0963967732565436m 7.916288081308232m -6.393535749941938m" 
+                data-normal="0m -0.173648178m -0.984807753m" 
+                data-visibility-attribute="visible"
+                data-orbit="180deg 80deg 7m" 
+                data-target="-1.1m 7.9m -6.4m"
+                data-room="2">
+            Info 1</button>
+        <button class="info-button"  
+                slot="hotspot-2-info-2" 
+                data-position="-2.0963967732565436m 7.916288081308232m -6.393535749941938m" 
+                data-normal="0m -0.173648178m -0.984807753m" 
+                data-visibility-attribute="visible"
+                data-orbit="180deg 80deg 7m" 
+                data-target="-1.1m 7.9m -6.4m"
+                data-room="2">
+            Info 2</button>
+
+        <!-- Room 3 -->
         <button class="view-button"  
                 slot="hotspot-3"
                 data-position="0.02775589252264643m 4.475654363632202m -6.476399143300341m" 
                 data-normal="0m -0.258819045m -0.965925826m" 
                 data-visibility-attribute="visible"
                 data-orbit="180deg 75deg 7m" 
-                data-target="0m 4.5m -6.5m">
+                data-target="0m 4.5m -6.5m"
+                data-room="3">
             3</button>
+        <button class="info-button"  
+                slot="hotspot-3-info-1" 
+                data-position="1.02775589252264643m 4.475654363632202m -6.476399143300341m" 
+                data-normal="0m -0.258819045m -0.965925826m" 
+                data-visibility-attribute="visible"
+                data-orbit="180deg 75deg 7m" 
+                data-target="0m 4.5m -6.5m"
+                data-room="3">
+            Info 1</button>
+        <button class="info-button"  
+                slot="hotspot-3-info-2" 
+                data-position="-1.02775589252264643m 4.475654363632202m -6.476399143300341m" 
+                data-normal="0m -0.258819045m -0.965925826m" 
+                data-visibility-attribute="visible"
+                data-orbit="180deg 75deg 7m" 
+                data-target="0m 4.5m -6.5m"
+                data-room="3">
+            Info 2</button>
+
+        <!-- Room 4 -->
         <button class="view-button"  
                 slot="hotspot-4" 
                 data-position="-4.268101913765271m 4.3920329511279212m -6.523958637943631m" 
                 data-normal="-0.642787610m -0.258819045m -0.766044443m" 
                 data-visibility-attribute="visible"
                 data-orbit="180deg 75deg 7m" 
-                data-target="-4.3m 4.4m -6.5m">
+                data-target="-4.3m 4.4m -6.5m"
+                data-room="4">
             4</button>
+        <button class="info-button"  
+                slot="hotspot-4-info-1" 
+                data-position="-3.268101913765271m 4.3920329511279212m -6.523958637943631m" 
+                data-normal="-0.642787610m -0.258819045m -0.766044443m" 
+                data-visibility-attribute="visible"
+                data-orbit="180deg 75deg 7m" 
+                data-target="-4.3m 4.4m -6.5m"
+                data-room="4">
+            Info 1</button>
+        <button class="info-button"  
+                slot="hotspot-4-info-2" 
+                data-position="-5.268101913765271m 4.3920329511279212m -6.523958637943631m" 
+                data-normal="-0.642787610m -0.258819045m -0.766044443m" 
+                data-visibility-attribute="visible"
+                data-orbit="180deg 75deg 7m" 
+                data-target="-4.3m 4.4m -6.5m"
+                data-room="4">
+            Info 2</button>
+
+        <!-- Room 5 -->
         <button class="view-button"  
                 slot="hotspot-5" 
                 data-position="5.161625716120152m 4.4601400594882676m -6.480447160917892m" 
                 data-normal="0.766044443m -0.258819045m -0.642787610m" 
                 data-visibility-attribute="visible"
                 data-orbit="180deg 75deg 7m" 
-                data-target="5.2m 4.5m -6.5m">
+                data-target="5.2m 4.5m -6.5m"
+                data-room="5">
             5</button>
+        <button class="info-button"  
+                slot="hotspot-5-info-1" 
+                data-position="6.161625716120152m 4.4601400594882676m -6.480447160917892m" 
+                data-normal="0.766044443m -0.258819045m -0.642787610m" 
+                data-visibility-attribute="visible"
+                data-orbit="180deg 75deg 7m" 
+                data-target="5.2m 4.5m -6.5m"
+                data-room="5">
+            Info 1</button>
+        <button class="info-button"  
+                slot="hotspot-5-info-2" 
+                data-position="4.161625716120152m 4.4601400594882676m -6.480447160917892m" 
+                data-normal="0.766044443m -0.258819045m -0.642787610m" 
+                data-visibility-attribute="visible"
+                data-orbit="180deg 75deg 7m" 
+                data-target="5.2m 4.5m -6.5m"
+                data-room="5">
+                Info 2</button>
+
+        <!-- Room 6 -->
         <button class="view-button"  
                 slot="hotspot-6" 
                 data-position="5.008252133167844m 7.933713534621662m 5.976859689461875m" 
                 data-normal="0.707106781m -0.173648178m 0.707106781m" 
                 data-visibility-attribute="visible"
                 data-orbit="0deg 80deg 7m" 
-                data-target="5m 7.9m 6m">
+                data-target="5m 7.9m 6m"
+                data-room="6">
             6</button>
+        <button class="info-button"  
+                slot="hotspot-6-info-1" 
+                data-position="4.008252133167844m 7.933713534621662m 5.976859689461875m" 
+                data-normal="0.707106781m -0.173648178m 0.707106781m" 
+                data-visibility-attribute="visible"
+                data-orbit="0deg 80deg 7m" 
+                data-target="5m 7.9m 6m"
+                data-room="6">
+            Info 1</button>
+        <button class="info-button"  
+                slot="hotspot-6-info-2" 
+                data-position="6.008252133167844m 7.933713534621662m 5.976859689461875m" 
+                data-normal="0.707106781m -0.173648178m 0.707106781m" 
+                data-visibility-attribute="visible"
+                data-orbit="0deg 80deg 7m" 
+                data-target="5m 7.9m 6m"
+                data-room="6">
+            Info 2</button>
+
+        <!-- Room 7 -->
         <button class="view-button"  
                 slot="hotspot-7" 
                 data-position="-1.119091379534228m 7.923051437741123m 6.086084288536002m" 
                 data-normal="0m -0.173648178m 0.984807753m" 
                 data-visibility-attribute="visible"
                 data-orbit="0deg 80deg 7m" 
-                data-target="-1.1m 7.9m 6.1m">
+                data-target="-1.1m 7.9m 6.1m"
+                data-room="7">
             7</button>
+        <button class="info-button"  
+                slot="hotspot-7-info-1" 
+                data-position="-2.119091379534228m 7.923051437741123m 6.086084288536002m" 
+                data-normal="0m -0.173648178m 0.984807753m" 
+                data-visibility-attribute="visible"
+                data-orbit="0deg 80deg 7m" 
+                data-target="-1.1m 7.9m 6.1m"
+                data-room="7">
+            Info 1</button>
+        <button class="info-button"  
+                slot="hotspot-7-info-2" 
+                data-position="-0.119091379534228m 7.923051437741123m 6.086084288536002m" 
+                data-normal="0m -0.173648178m 0.984807753m" 
+                data-visibility-attribute="visible"
+                data-orbit="0deg 80deg 7m" 
+                data-target="-1.1m 7.9m 6.1m"
+                data-room="7">
+            Info 2</button>
+
+        <!-- Room 8 -->
         <button class="view-button"  
                 slot="hotspot-8" 
                 data-position="2.3508562935009203m 3.930873990058899m 6.028137522599129m" 
                 data-normal="0.342020143m -0.258819045m 0.939692621m" 
                 data-visibility-attribute="visible"
                 data-orbit="0deg 75deg 7m" 
-                data-target="2.4m 3.9m 6m">
+                data-target="2.4m 3.9m 6m"
+                data-room="8">
             8</button>
+        <button class="info-button"  
+                slot="hotspot-8-info-1" 
+                data-position="1.3508562935009203m 3.930873990058899m 6.028137522599129m" 
+                data-normal="0.342020143m -0.258819045m 0.939692621m" 
+                data-visibility-attribute="visible"
+                data-orbit="0deg 75deg 7m" 
+                data-target="2.4m 3.9m 6m"
+                data-room="8">
+            Info 1</button>
+        <button class="info-button"  
+                slot="hotspot-8-info-2" 
+                data-position="3.3508562935009203m 3.930873990058899m 6.028137522599129m" 
+                data-normal="0.342020143m -0.258819045m 0.939692621m" 
+                data-visibility-attribute="visible"
+                data-orbit="0deg 75deg 7m" 
+                data-target="2.4m 3.9m 6m"
+                data-room="8">
+            Info 2</button>
+
+        <!-- Room 9 -->
         <button class="view-button"  
                 slot="hotspot-9" 
                 data-position="-3.6555645845936873m 3.9308743561279993m 5.941277910735158m" 
                 data-normal="-0.342020143m -0.258819045m 0.939692621m" 
                 data-visibility-attribute="visible"
                 data-orbit="0deg 75deg 7m" 
-                data-target="-3.7m 3.9m 5.9m">
+                data-target="-3.7m 3.9m 5.9m"
+                data-room="9">
             9</button> 
+        <button class="info-button"  
+                slot="hotspot-9-info-1" 
+                data-position="-4.6555645845936873m 3.9308743561279993m 5.941277910735158m" 
+                data-normal="-0.342020143m -0.258819045m 0.939692621m" 
+                data-visibility-attribute="visible"
+                data-orbit="0deg 75deg 7m" 
+                data-target="-3.7m 3.9m 5.9m"
+                data-room="9">
+            Info 1</button>
+        <button class="info-button"  
+                slot="hotspot-9-info-2" 
+                data-position="-2.6555645845936873m 3.9308743561279993m 5.941277910735158m" 
+                data-normal="-0.342020143m -0.258819045m 0.939692621m" 
+                data-visibility-attribute="visible"
+                data-orbit="0deg 75deg 7m" 
+                data-target="-3.7m 3.9m 5.9m"
+                data-room="9">
+            Info 2</button>
     </model-viewer>
 
+
+    
     <div id="room-sidebar" class="sidebar">
         <h2>Rooms</h2>
         <button class="room-button" data-room="1">Room 1</button>
@@ -131,4 +323,7 @@
 
 //weiche mobil meldung auf desktop angucken template overlay 
 
+//custom lade animation video einfügen
+//custom lade animation video einfügen
+//custom lade animation video einfügen
 //custom lade animation video einfügen
