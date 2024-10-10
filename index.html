@@ -13,14 +13,14 @@
     <!-- Import helper functions -->
     <script src="informations.js"></script>
     <script src="helper.js"></script>
-    <script src="constructor.js"></script>
 </head>
 <body>
+
+    <!-- Loading screen -->
     <div id="loading-screen">
-        Test 12345
-        <video id="loading-video" autoplay loop muted playsinline>
+        <video id="loading-video" autoplay loop muted playsinline> 
             <source src="poster.webm" type="video/webm">
-            Your browser does not support the video tag.
+            Your browser does not support the video tag. <!-- fallback -->
         </video>
     </div>
 
@@ -51,6 +51,17 @@
             - view button should hide all other but the corrosponding information-buttons
             - on moving a certtain distance all view buttons get visible again and information buttons hidden
         --> 
+
+        <button id="fullhouse-button" 
+                class="view-button hidden"  
+                slot="hotspot-0" 
+                data-position="0 0 0" 
+                data-normal="0 0 0" 
+                data-visibility-attribute="visible"                       
+                data-orbit="140deg 80deg 30m" 
+                data-target="0 0 0"
+                data-room="0"> <!-- data-info="1" -->
+            1</button>
 
         <!-- Room 1 -->
         <button class="view-button"  
@@ -333,6 +344,8 @@
                 data-info="2">
             Info 2</button>
     </model-viewer>
+
+    <button id="full-house-button" class="hidden">Go back to house</button>
 
     <!--
         - sidebar with room buttons

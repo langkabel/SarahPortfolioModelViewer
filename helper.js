@@ -1,6 +1,8 @@
 //On load
 document.addEventListener('DOMContentLoaded', function() {
 
+    ////////////////////////////////////////////////////////////////// Initialization
+
     //Model Viewer
     const modelViewer = document.querySelector("#sarahs-haus");
 
@@ -16,7 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const infoWindowTitle = document.getElementById('info-window-title');
     const infoWindowContent = document.getElementById('info-window-content');
     const closeInfoWindowButton = document.getElementById('close-info-window');
-
+    const fullHouseButton = document.getElementById('full-house-button');
+    
     //Variables
     let currentRoom = null;
     let currentTarget = null;
@@ -167,6 +170,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initially hide all buttons
     hideButtons();
 
+    ////////////////////////////////////////////////////////////////// Mobile View and Overlay
+
     //function to detect if the browser is on a mobile device
     function isMobile() {
         // Check if we're forcing mobile view for testing
@@ -220,6 +225,8 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('load', handleMobileLayout);
     window.addEventListener('resize', handleMobileLayout);
 
+    ////////////////////////////////////////////////////////////////// Loading Video
+
     // Hide loading screen when the model is loaded
     modelViewer.addEventListener('load', () => {
         const loadingScreen = document.getElementById('loading-screen');
@@ -234,4 +241,5 @@ document.addEventListener('DOMContentLoaded', function() {
         const loadingScreen = document.getElementById('loading-screen');
         loadingScreen.classList.remove('hidden');
     });
+
 });
