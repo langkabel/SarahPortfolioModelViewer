@@ -13,6 +13,7 @@
     <!-- Import helper functions -->
     <script src="informations.js"></script>
     <script src="helper.js"></script>
+    <script src="constructor.js"></script>
 </head>
 <body>
     <div id="hotspot-side"></div>
@@ -30,9 +31,16 @@
                     max-field-of-view="45deg" 
                     interpolation-decay="200" 
                     min-camera-orbit="auto auto 5%">
-        <!-- room buttons placed inside the model
-        on click move to the data-target position and take the local position of data orbit
-        view button should hide all other but the corrosponding information-buttons--> 
+
+        <!-- 
+            - room buttons placed inside the model
+            - slot should never be renamed, it binds the sidebar button to the corresponding hotspot
+            - class *-button assigns the functions so dont rename (add classes if needed)
+            - button is displayed 3d at the data-position
+            - on click move point to go around the data-target position and take the local position of data orbit
+            - view button should hide all other but the corrosponding information-buttons
+            - on moving a certtain distance all view buttons get visible again and information buttons hidden
+        --> 
 
         <!-- Room 1 -->
         <button class="view-button"  
@@ -42,7 +50,7 @@
                 data-visibility-attribute="visible"
                 data-orbit="180deg 80deg 7m" 
                 data-target="5.2m 7.9m -6.3m"
-                data-room="1">
+                data-room="1"> <!-- data-info="1" -->
             1</button>
         <button class="info-button"  
                 slot="hotspot-1-info-1" 
@@ -52,7 +60,7 @@
                 data-orbit="180deg 80deg 7m" 
                 data-target="5.2m 7.9m -6.3m"
                 data-room="1"
-                data-info="1">
+                data-info="1"> <!-- Info 1 for object in informations.js-->
             Info 1</button>
         <button class="info-button"  
                 slot="hotspot-1-info-2" 
@@ -240,7 +248,7 @@
                 data-orbit="0deg 80deg 7m" 
                 data-target="-1.1m 7.9m 6.1m"
                 data-room="7"
-                data-info="7">
+                data-info="1">
             Info 1</button>
         <button class="info-button"  
                 slot="hotspot-7-info-2" 
@@ -249,7 +257,8 @@
                 data-visibility-attribute="visible"
                 data-orbit="0deg 80deg 7m" 
                 data-target="-1.1m 7.9m 6.1m"
-                data-room="7">
+                data-room="7"
+                data-info="2">
             Info 2</button>
 
         <!-- Room 8 -->
@@ -270,7 +279,7 @@
                 data-orbit="0deg 75deg 7m" 
                 data-target="2.4m 3.9m 6m"
                 data-room="8"
-                data-info="8">
+                data-info="1">
             Info 1</button>
         <button class="info-button"  
                 slot="hotspot-8-info-2" 
@@ -280,7 +289,7 @@
                 data-orbit="0deg 75deg 7m" 
                 data-target="2.4m 3.9m 6m"
                 data-room="8"
-                data-info="8">
+                data-info="2">
             Info 2</button>
 
         <!-- Room 9 -->
@@ -301,7 +310,7 @@
                 data-orbit="0deg 75deg 7m" 
                 data-target="-3.7m 3.9m 5.9m"
                 data-room="9"
-                data-info="9">
+                data-info="1">
             Info 1</button>
         <button class="info-button"  
                 slot="hotspot-9-info-2" 
@@ -311,11 +320,17 @@
                 data-orbit="0deg 75deg 7m" 
                 data-target="-3.7m 3.9m 5.9m"
                 data-room="9"
-                data-info="9">
+                data-info="2">
             Info 2</button>
     </model-viewer>
 
-    
+    <!--
+        - sidebar with room buttons
+        - dont remove classes, they are used for styling and functionality
+        - sidebar is hidden on mobile devices 
+        - the style is set to block when initialized in helper.js (function handleMobileLayout())
+        - if flex is beeing used instead of block this needs to be changed in the helper.js file
+    -->
     <div id="room-sidebar" class="sidebar">
         <h2>Rooms</h2>
         <button class="room-button" data-room="1">Room 1</button>
@@ -329,9 +344,12 @@
         <button class="room-button" data-room="9">Room 9</button>
     </div>
 
-    <div id="overlay-test_1" class="overlay"></div>
-    <div id="overlay-test_2" class="overlay"></div>
-
+    <!-- 
+        - overlay with information 
+        - container for the information content
+        - button to close the overlay
+        - dont remove classes, they are used for styling and functionality
+    -->
     <div id="info-window" class="side-info-window">
         <div class="info-window-content">
             <button id="close-info-window">&times;</button>
@@ -339,13 +357,17 @@
             <div id="info-window-content"></div>
         </div>
     </div>
+
+    <!-- 
+        - overlay for mobile devices
+        - dont remove classes, they are used for styling and functionality
+    -->
+    <div id="mobile-overlay" class="overlay">
+        <div class="mobile-content">
+            <span class="close-button">&times;</span>
+            <h2>Mobile Device Detected</h2>
+            <p>This application may not be optimized for mobile devices. For the best experience, please use a desktop browser.</p>
+        </div>
+    </div>
 </body>
 </html>
-
-//template sidebar für räume kein overlay buttons für raume //Check!
-
-//template button zum öffnen von Informationen HTML, Container Overlay, Button zum schließen
-
-//weiche mobil meldung auf desktop angucken template overlay 
-
-//custom lade animation video einfügen
