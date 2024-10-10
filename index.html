@@ -16,13 +16,23 @@
     <script src="constructor.js"></script>
 </head>
 <body>
+    <div id="loading-screen">
+        Test 12345
+        <video id="loading-video" autoplay loop muted playsinline>
+            <source src="poster.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
     <div id="hotspot-side"></div>
 
     <!-- model viewer with model, room buttons and information buttons -->
     <model-viewer   id="sarahs-haus"
                     src="SarahTest3textures.glb" 
                     camera-controls tone-mapping="neutral" 
-                    poster="poster.webp" 
+                    loading="eager"
+                    poster="poster.jpg" 
+                    interaction-prompt="none"
                     shadow-intensity="1.85" 
                     exposure="0.65" 
                     shadow-softness="1"

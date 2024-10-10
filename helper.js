@@ -219,4 +219,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Call this function when the page loads and on window resize
     window.addEventListener('load', handleMobileLayout);
     window.addEventListener('resize', handleMobileLayout);
+
+    // Hide loading screen when the model is loaded
+    modelViewer.addEventListener('load', () => {
+        const loadingScreen = document.getElementById('loading-screen');
+        const loadingVideo = document.getElementById('loading-video');
+        loadingScreen.classList.add('hidden');
+        loadingVideo.pause();
+    });
+
+    // Show loading screen if there's an error loading the model
+    modelViewer.addEventListener('error', () => {
+        console.error('Error loading model');
+        const loadingScreen = document.getElementById('loading-screen');
+        loadingScreen.classList.remove('hidden');
+    });
 });
