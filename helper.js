@@ -12,17 +12,21 @@ document.addEventListener('DOMContentLoaded', function() {
     //Buttons
     const viewButtons = modelViewer.querySelectorAll('.view-button');
     const infoButtons = modelViewer.querySelectorAll('.info-button');
+    const room0Button = document.getElementById('room-0-button');
 
     //Info Window
     const infoWindow = document.getElementById('info-window');
     const infoWindowTitle = document.getElementById('info-window-title');
     const infoWindowContent = document.getElementById('info-window-content');
-    const closeInfoWindowButton = document.getElementById('close-info-window');
-    const fullHouseButton = document.getElementById('full-house-button');
+    const closeInfoWindowButton = document.getElementById('close-info-window'); 
+    const orbitthreshold= 15; 
     
     //Variables
-    let currentRoom = null;
+    let currentRoom = 0;
     let currentTarget = null;
+
+    modelViewer.cameraTarget = viewButtons[0].target;
+    modelViewer.cameraOrbit = viewButtons[0].orbit;
 
     // If you need to ensure 'informations.js' is loaded before using roomInformation, you might want to check its existence:
     if (typeof roomInformation === 'undefined') {
@@ -86,6 +90,17 @@ document.addEventListener('DOMContentLoaded', function() {
         infoButtons.forEach(button => button.classList.remove('visible'));
     }
 
+    function updateRoom0ButtonVisibility() {
+        const orbit = modelViewer.getCameraOrbit();
+        const distance = orbit.radius;
+        
+        if (distance < orbitthreshold) {
+            room0Button.classList.remove('hidden');
+        } else {
+            room0Button.classList.add('hidden');
+        }
+    }
+
     //function to show the info buttons for the corresponding room
     function showRoomInfo(roomNumber) {
         hideButtons();
@@ -127,6 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event.detail.source === 'user-interaction') {
             checkCameraPosition();
         }
+        updateRoom0ButtonVisibility();
     });
 
     //function to show the info buttons for the corresponding room when the view buttons are clicked
@@ -153,11 +169,11 @@ document.addEventListener('DOMContentLoaded', function() {
     closeInfoWindowButton.addEventListener('click', hideInfoWindow);
 
     //function to move the camera to the corresponding room when the room buttons are clicked
-    sidebar.querySelectorAll('.room-button').forEach((button) => {
+    document.querySelectorAll('.room-button').forEach((button) => {
         button.addEventListener('click', () => {
             const roomNumber = button.dataset.room;
             const correspondingHotspot = modelViewer.querySelector(`[slot="hotspot-${roomNumber}"]`);
-            if (correspondingHotspot) {
+            if (correspondingHotspot && roomNumber !== 'NaN') {
                 const dataset = correspondingHotspot.dataset;
                 modelViewer.cameraTarget = dataset.target;
                 modelViewer.cameraOrbit = dataset.orbit;
@@ -169,6 +185,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initially hide all buttons
     hideButtons();
+    updateRoom0ButtonVisibility();
 
     ////////////////////////////////////////////////////////////////// Mobile View and Overlay
 
@@ -241,5 +258,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const loadingScreen = document.getElementById('loading-screen');
         loadingScreen.classList.remove('hidden');
     });
+
+    
+
+
+   
 
 });

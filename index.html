@@ -26,13 +26,14 @@
 
     <div id="hotspot-side"></div>
 
+    <button id="room-0-button" class="full-house-button room-button" data-room="0">Full House</button>
+    
     <!-- model viewer with model, room buttons and information buttons -->
     <model-viewer   id="sarahs-haus"
                     src="SarahTest3textures.glb" 
                     camera-controls tone-mapping="neutral" 
                     loading="eager"
                     poster="poster.jpg" 
-                    interaction-prompt="none"
                     shadow-intensity="1.85" 
                     exposure="0.65" 
                     shadow-softness="1"
@@ -40,7 +41,9 @@
                     min-field-of-view="25deg" 
                     max-field-of-view="45deg" 
                     interpolation-decay="200" 
-                    min-camera-orbit="auto auto 5%">
+                    min-camera-orbit="auto auto 5%"
+                    max-camera-orbit="auto 90 auto"
+                    skybox-image="skybox.jpg">
 
         <!-- 
             - room buttons placed inside the model
@@ -52,7 +55,7 @@
             - on moving a certtain distance all view buttons get visible again and information buttons hidden
         --> 
 
-        <button id="fullhouse-button" 
+        <button id="sarahs-haus"
                 class="view-button hidden"  
                 slot="hotspot-0" 
                 data-position="0 0 0" 
@@ -145,7 +148,7 @@
                 data-orbit="180deg 75deg 7m" 
                 data-target="0m 4.5m -6.5m"
                 data-room="3"
-                data-info="3">
+                data-info="1">
             Info 1</button>
         <button class="info-button"  
                 slot="hotspot-3-info-2" 
@@ -155,7 +158,7 @@
                 data-orbit="180deg 75deg 7m" 
                 data-target="0m 4.5m -6.5m"
                 data-room="3"
-                data-info="3">
+                data-info="2">
             Info 2</button>
 
         <!-- Room 4 -->
@@ -176,7 +179,7 @@
                 data-orbit="180deg 75deg 7m" 
                 data-target="-4.3m 4.4m -6.5m"
                 data-room="4"
-                data-info="4">
+                data-info="1">
             Info 1</button>
         <button class="info-button"  
                 slot="hotspot-4-info-2" 
@@ -186,7 +189,7 @@
                 data-orbit="180deg 75deg 7m" 
                 data-target="-4.3m 4.4m -6.5m"
                 data-room="4"
-                data-info="4">
+                data-info="2">
             Info 2</button>
 
         <!-- Room 5 -->
@@ -207,7 +210,7 @@
                 data-orbit="180deg 75deg 7m" 
                 data-target="5.2m 4.5m -6.5m"
                 data-room="5"
-                data-info="5">
+                data-info="1">
             Info 1</button>
         <button class="info-button"  
                 slot="hotspot-5-info-2" 
@@ -217,7 +220,7 @@
                 data-orbit="180deg 75deg 7m" 
                 data-target="5.2m 4.5m -6.5m"
                 data-room="5"
-                data-info="5">
+                data-info="2">
                 Info 2</button>
 
         <!-- Room 6 -->
@@ -238,7 +241,7 @@
                 data-orbit="0deg 80deg 7m" 
                 data-target="5m 7.9m 6m"
                 data-room="6"
-                data-info="6">
+                data-info="1">
             Info 1</button>
         <button class="info-button"  
                 slot="hotspot-6-info-2" 
@@ -248,7 +251,7 @@
                 data-orbit="0deg 80deg 7m" 
                 data-target="5m 7.9m 6m"
                 data-room="6"
-                data-info="6">
+                data-info="2">
             Info 2</button>
 
         <!-- Room 7 -->
@@ -356,6 +359,7 @@
     -->
     <div id="room-sidebar" class="sidebar">
         <h2>Rooms</h2>
+        <button class="room-button" data-room="0">Sarahs Haus</button>
         <button class="room-button" data-room="1">Room 1</button>
         <button class="room-button" data-room="2">Room 2</button>
         <button class="room-button" data-room="3">Room 3</button>

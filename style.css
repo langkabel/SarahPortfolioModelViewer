@@ -28,6 +28,17 @@ model-viewer {
     pointer-events: auto;
 }
 
+
+#loading-video {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
 .sidebar {
     position: fixed;
     top: 0;
@@ -61,9 +72,6 @@ model-viewer {
 }
 
 /* Adjust the model-viewer to make space for the sidebar */
-model-viewer {
-    width: calc(100% - 200px);
-}
 
 .side-info-window {
     position: fixed;
@@ -199,13 +207,32 @@ model-viewer {
     align-items: center;
 }
 
-#loading-video {
-    max-width: 100%;
-    max-height: 100%;
+#room-0-button {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    width: 200px;
+    background-color: rgba(224, 240, 255, 0.8);
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.hidden {
-    display: none !important;
+#room-0-button:hover {
+    background-color: rgba(224, 240, 255, 1);
 }
+
+#room-0-button.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
 
 
