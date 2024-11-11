@@ -192,6 +192,7 @@ model-viewer {
     background: none;
     border: none;
     cursor: pointer;
+    z-index: 1000;
 }
 
 #info-window-title {
@@ -206,9 +207,12 @@ model-viewer {
 }
 
 #info-window-content iframe {
-    width: 100%;
+    width: 100vw;
     height: 100%;
     border: none;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 /* Styles for the view and info buttons */
