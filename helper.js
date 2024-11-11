@@ -62,20 +62,30 @@ document.addEventListener('DOMContentLoaded', function() {
     //get the right information for the info overlay from Informations.js and debug it
     function getInfoContent(roomNumber, infoNumber) {
         console.log('Getting info for room:', roomNumber, 'info:', infoNumber);
-
+    
+        // Handle special cases for about and contact
+        if (roomNumber === 'about' || roomNumber === 'contact') {
+            console.log('Special case:', roomNumber);
+            console.log('Available info:', roomInformation[roomNumber]);
+            if (roomInformation[roomNumber] && roomInformation[roomNumber][infoNumber]) {
+                return roomInformation[roomNumber][infoNumber];
+            }
+        }
+    
+        // Existing room information handling
         console.log('Available rooms:', Object.keys(roomInformation));
         if (roomInformation[roomNumber]) {
             console.log('Available info for room', roomNumber + ':', Object.keys(roomInformation[roomNumber]));
         }
-
+    
         if (!roomInformation[roomNumber] || !roomInformation[roomNumber][infoNumber]) {
             console.warn('No info content for room:', roomNumber, 'info:', infoNumber);
             return { 
                 title: 'Information Not Available', 
-                content: `<p>Sorry, no information is currently available for Room ${roomNumber}, Info ${infoNumber}.</p>`
+                content: `<p>Sorry, no information is currently available.</p>`
             };
         }
-
+    
         return roomInformation[roomNumber][infoNumber];
     }
 
@@ -284,7 +294,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const validRooms = Array.from(document.querySelectorAll('.room-button'))
             .map(button => parseInt(button.dataset.room))
             .filter(num => !isNaN(num) && num !== 0) // Exclude room 0
-            .sort((a, b) => a - b);
+            // .sort((a, b) => a - b);
         
         // Find current index and calculate next room
         const currentIndex = validRooms.indexOf(parseInt(currentRoom));
@@ -305,6 +315,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add event listeners for the switch room buttons
     switchRoomButtons.forEach(button => {
         button.addEventListener('click', () => switchRoom(button.dataset.direction));
+    });
+
+    // Add event listeners for About and Contact buttons
+    const aboutButton = document.getElementById('navigation-button-about');
+    const contactButton = document.getElementById('navigation-button-contact');
+
+    aboutButton.addEventListener('click', () => {
+        const infoContent = getInfoContent('about', '1');
+        showInfoWindow(infoContent.title, infoContent.content);
+    });
+
+    contactButton.addEventListener('click', () => {
+        const infoContent = getInfoContent('contact', '1');
+        showInfoWindow(infoContent.title, infoContent.content);
     });
 
 });
