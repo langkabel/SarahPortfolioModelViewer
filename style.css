@@ -172,6 +172,10 @@ model-viewer {
     z-index: 1000;
 }
 
+.overlay.visible {
+    display: flex;
+}
+
 .mobile-content {
     background-color: white;
     padding: 20px;
@@ -190,10 +194,6 @@ model-viewer {
     cursor: pointer;
 }
 
-.overlay.visible {
-    display: flex;
-}
-
 #loading-screen {
     position: fixed;
     top: 0;
@@ -207,13 +207,19 @@ model-viewer {
     align-items: center;
 }
 
-#room-0-button {
+#switch-room-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
+}
+
+#switch-room-button-container button {
     padding: 10px 20px;
-    width: 200px;
+    width: 150px;
     background-color: rgba(224, 240, 255, 0.8);
     color: #333;
     border: none;
@@ -223,13 +229,14 @@ model-viewer {
     transition: opacity 0.3s ease, visibility 0.3s ease;
     font-weight: bold;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin: 0 10px;
 }
 
-#room-0-button:hover {
+#switch-room-button-container button:hover {
     background-color: rgba(224, 240, 255, 1);
 }
 
-#room-0-button.hidden {
+#switch-room-button-container button.hidden {
     opacity: 0;
     visibility: hidden;
 }

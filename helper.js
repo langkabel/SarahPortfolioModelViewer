@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const viewButtons = modelViewer.querySelectorAll('.view-button');
     const infoButtons = modelViewer.querySelectorAll('.info-button');
     const room0Button = document.getElementById('room-0-button');
+    const switchRoomButtons = document.querySelectorAll('.switch-room-button');
 
     //Info Window
     const infoWindow = document.getElementById('info-window');
@@ -101,6 +102,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function updateSwitchRoomButtonsVisibility() {
+        const switchButtons = document.querySelectorAll('.switch-room-button');
+    
+        // Show switch buttons only when a room's information is being displayed and room number is not 0
+        if (currentRoom !== null && currentRoom !== "0") {
+            switchButtons.forEach(button => button.classList.remove('hidden'));
+        } else {
+            switchButtons.forEach(button => button.classList.add('hidden'));
+        }
+    }
+
     //function to show the info buttons for the corresponding room
     function showRoomInfo(roomNumber) {
         hideButtons();
@@ -111,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         currentRoom = roomNumber;
         currentTarget = modelViewer.getCameraTarget();
+        updateSwitchRoomButtonsVisibility();
     }
 
     //function to calculate the distance between two positions (for the camera position check)
@@ -122,6 +135,8 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     }
 
+
+
     //function to check if the camera is in the room
     function checkCameraPosition() {
         const currentCameraTarget = modelViewer.getCameraTarget();
@@ -132,6 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showButtons();
             currentRoom = null;
             currentTarget = null;
+            updateSwitchRoomButtonsVisibility();
         } else if (currentRoom) {
             showRoomInfo(currentRoom);
         }
@@ -152,6 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    
     //function to show the info overlay when the info buttons are clicked
     infoButtons.forEach(button => {
       button.addEventListener('click', () => {
@@ -259,9 +276,35 @@ document.addEventListener('DOMContentLoaded', function() {
         loadingScreen.classList.remove('hidden');
     });
 
-    
+    // Add these functions after your other function declarations
+    function switchRoom(direction) {
+        if (currentRoom === null) return;
+        
+        // Get all available room buttons to determine valid room numbers
+        const validRooms = Array.from(document.querySelectorAll('.room-button'))
+            .map(button => parseInt(button.dataset.room))
+            .filter(num => !isNaN(num) && num !== 0) // Exclude room 0
+            .sort((a, b) => a - b);
+        
+        // Find current index and calculate next room
+        const currentIndex = validRooms.indexOf(parseInt(currentRoom));
+        let nextIndex = currentIndex + parseInt(direction);
+        
+        // Handle wrapping around
+        if (nextIndex >= validRooms.length) nextIndex = 0;
+        if (nextIndex < 0) nextIndex = validRooms.length - 1;
+        
+        // Get the view button for the next room and trigger its click event
+        const nextRoomButton = document.querySelector(`.view-button[data-room="${validRooms[nextIndex]}"]`);
+        if (nextRoomButton) {
+            nextRoomButton.click(); // This will trigger annotationClicked and adjust camera
+            showRoomInfo(validRooms[nextIndex].toString());
+        }
+    }
 
-
-   
+    // Add event listeners for the switch room buttons
+    switchRoomButtons.forEach(button => {
+        button.addEventListener('click', () => switchRoom(button.dataset.direction));
+    });
 
 });

@@ -26,7 +26,7 @@
 
     <div id="hotspot-side"></div>
 
-    <button id="room-0-button" class="full-house-button room-button" data-room="0">Full House</button>
+    
     
     <!-- model viewer with model, room buttons and information buttons -->
     <model-viewer   id="sarahs-haus"
@@ -54,17 +54,26 @@
             - view button should hide all other but the corrosponding information-buttons
             - on moving a certtain distance all view buttons get visible again and information buttons hidden
         --> 
+        <div id="switch-room-button-container">
+            <button id="switch-room-button-previous"
+                    class="switch-room-button hidden"
+                    data-direction="-1">Previous</button>
+            <button id="room-0-button" class="full-house-button room-button" data-room="0">Full House</button>
+            <button id="switch-room-button-next"
+                    class="switch-room-button hidden"
+                    data-direction="1">Next</button>
+        </div>
 
         <button id="sarahs-haus"
-                class="view-button hidden"  
-                slot="hotspot-0" 
-                data-position="0 0 0" 
-                data-normal="0 0 0" 
-                data-visibility-attribute="visible"                       
-                data-orbit="140deg 80deg 30m" 
-                data-target="0 0 0"
-                data-room="0"> <!-- data-info="1" -->
-            1</button>
+        class="view-button hidden"  
+        slot="hotspot-0" 
+        data-position="0 0 0" 
+        data-normal="0 0 0" 
+        data-visibility-attribute="visible"                       
+        data-orbit="140deg 80deg 30m" 
+        data-target="0 0 0"
+        data-room="0"> <!-- data-info="1" -->
+        </button>
 
         <!-- Room 1 -->
         <button class="view-button"  
