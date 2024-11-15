@@ -8,6 +8,7 @@
     
     <!-- Style for buttons, sidebar and overlay -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylenav.css">
     <!-- Import library for model viewer -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
     <!-- Import helper functions -->
@@ -18,15 +19,18 @@
 <body>
     <!-- Loading screen -->
     <div id="loading-screen">
-        <video id="loading-video" autoplay loop muted playsinline> 
-            <source src="poster.webm" type="video/webm">
-            Your browser does not support the video tag. <!-- fallback -->
-        </video>
+        <div class="loader-container">
+            <div class="text-animation">
+                <span>Welcome to Sarah's House</span>
+
+            </div>
+        <div class="circle-loader-container">
+                <div class="loader"></div>
+            </div>
+        </div>
     </div>
 
-    <div id="hotspot-side"></div>
-    
-    <div id="navbar">
+<div id="navbar">
         <div class="sarah-wewer">Sarah Wewer</div>
         <div id="navigation-buttons">
             <div class="dropdown">
@@ -49,7 +53,15 @@
         </div>
     </div>
     
-    
+    <div id="switch-room-button-container">
+        <button id="switch-room-button-previous"
+                class="switch-room-button hidden"
+                data-direction="-1">◀ Zurück</button>
+        <button id="room-0-button" class="full-house-button room-button" data-room="0">Ganzes Haus</button>
+        <button id="switch-room-button-next"
+                class="switch-room-button hidden"
+                data-direction="1">Weiter ▶</button>
+    </div>
     
     <!-- model viewer with model, room buttons and information buttons -->
     <model-viewer   id="sarahs-haus"
@@ -77,25 +89,16 @@
             - view button should hide all other but the corrosponding information-buttons
             - on moving a certtain distance all view buttons get visible again and information buttons hidden
         --> 
-        <div id="switch-room-button-container">
-            <button id="switch-room-button-previous"
-                    class="switch-room-button hidden"
-                    data-direction="-1">◀ Zurück</button>
-            <button id="room-0-button" class="full-house-button room-button" data-room="0">Ganzes Haus</button>
-            <button id="switch-room-button-next"
-                    class="switch-room-button hidden"
-                    data-direction="1">Weiter ▶</button>
-        </div>
 
         <button id="sarahs-haus"
-        class="view-button hidden"  
-        slot="hotspot-0" 
-        data-position="0 0 0" 
-        data-normal="0 0 0" 
-        data-visibility-attribute="visible"                       
-        data-orbit="140deg 80deg 30m" 
-        data-target="0 0 0"
-        data-room="0"> <!-- data-info="1" -->
+            class="view-button hidden"  
+            slot="hotspot-0" 
+            data-position="0 0 0" 
+            data-normal="0 0 0" 
+            data-visibility-attribute="visible"                       
+            data-orbit="140deg 80deg 30m" 
+            data-target="0 0 0"
+            data-room="0"> <!-- data-info="1" -->
         </button>
 
         <!-- Room 1 -->
@@ -130,7 +133,6 @@
                 data-target="-1.1m 7.9m -6.4m"
                 data-room="2">
             Kosmos</button>
-
         <button class="info-button"  
                 slot="hotspot-2-info-1" 
                 data-position="-1.0963967732565436m 7.916288081308232m -6.393535749941938m" 
@@ -295,9 +297,6 @@
             Informationen</button>
 
     </model-viewer>
-
-    <button id="full-house-button" class="hidden">Go back to house</button>
-
     <!--
         - sidebar with room buttons
         - dont remove classes, they are used for styling and functionality
@@ -314,22 +313,11 @@
     -->
     <div id="info-window" class="side-info-window">
         <div class="info-window-content">
-            <button id="close-info-window">&times;</button>
+            <button class="close" id="close-info-window"></button>
             <h2 id="info-window-title"></h2>
             <div id="info-window-content"></div>
         </div>
     </div>
 
-    <!-- 
-        - overlay for mobile devices
-        - dont remove classes, they are used for styling and functionality
-    -->
-    <div id="mobile-overlay" class="overlay">
-        <div class="mobile-content">
-            <span class="close-button">&times;</span>
-            <h2>Mobile Device Detected</h2>
-            <p>This application may not be optimized for mobile devices. For the best experience, please use a desktop browser.</p>
-        </div>
-    </div>
 </body>
 </html>

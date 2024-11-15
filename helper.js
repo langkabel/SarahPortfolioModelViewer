@@ -6,9 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
     //Model Viewer
     const modelViewer = document.querySelector("#sarahs-haus");
 
-    //Room Sidebar
-    const sidebar = document.querySelector("#room-sidebar");
-
     //Buttons
     const viewButtons = modelViewer.querySelectorAll('.view-button');
     const infoButtons = modelViewer.querySelectorAll('.info-button');
@@ -28,6 +25,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
     modelViewer.cameraTarget = viewButtons[0].target;
     modelViewer.cameraOrbit = viewButtons[0].orbit;
+
+    ////////////////////////////////////////////////////////////////// Navigation
+
+    // Dropdown functionality
+    const dropdownButton = document.getElementById('navigation-button-rooms');
+    const dropdownContent = document.getElementById('room-sidebar');
+
+    dropdownButton.addEventListener('click', function(e) {
+        e.stopPropagation();
+        console.log('Dropdown button clicked');
+        dropdownContent.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!dropdownButton.contains(e.target)) {
+            console.log('Click outside');
+            dropdownContent.classList.remove('show');
+        }
+    });
 
     // If you need to ensure 'informations.js' is loaded before using roomInformation, you might want to check its existence:
     if (typeof roomInformation === 'undefined') {
@@ -178,7 +195,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    
+    //when i click on room 0 button, i want to close all info overlays
+    room0Button.addEventListener('click', () => {
+        hideInfoWindow();
+    });
+
+    //when clickmon canvas, and overlay is visible,     close all overlays
+    modelViewer.addEventListener('click', (event) => {
+        if (event.target === modelViewer && infoWindow.classList.contains('visible')) {
+            hideInfoWindow();
+        }
+    }); 
+
     //function to show the info overlay when the info buttons are clicked
     infoButtons.forEach(button => {
       button.addEventListener('click', () => {
@@ -214,76 +242,35 @@ document.addEventListener('DOMContentLoaded', function() {
     hideButtons();
     updateRoom0ButtonVisibility();
 
-    ////////////////////////////////////////////////////////////////// Mobile View and Overlay
-
-    //function to detect if the browser is on a mobile device
-    function isMobile() {
-        // Check if we're forcing mobile view for testing
-        if (window.forceMobileView) {
-            return true;
-        }
-        
-        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-            || (window.matchMedia && window.matchMedia("(max-width: 767px)").matches);
-    }
-
-    // Function to toggle mobile view for testing
-    function toggleMobileView() {
-        window.forceMobileView = !window.forceMobileView;
-        handleMobileLayout();
-    }
-
-    //toggleMobileView(); // for Testing the mobile view
-
-    //function to show the mobile overlay
-    function showMobileOverlay() {
-        const overlay = document.getElementById('mobile-overlay');
-        overlay.classList.add('visible');
-
-        const closeButton = overlay.querySelector('.close-button');
-        closeButton.addEventListener('click', () => {
-            overlay.classList.remove('visible');
-        });
-    }
-
-    function handleMobileLayout() {
-        const sidebar = document.getElementById('sidebar');
-        
-        if (isMobile()) {
-            // Hide sidebar
-            if (sidebar) {
-                sidebar.style.display = 'none';
-            }
-            
-            // Show mobile overlay
-            showMobileOverlay();
-        } else {
-            // Show sidebar for non-mobile devices
-            if (sidebar) {
-                sidebar.style.display = 'block'; // or 'flex', depending on your layout
-            }
-        }
-    }
-
-    // Call this function when the page loads and on window resize
-    window.addEventListener('load', handleMobileLayout);
-    window.addEventListener('resize', handleMobileLayout);
 
     ////////////////////////////////////////////////////////////////// Loading Video
 
-    // Hide loading screen when the model is loaded
-    modelViewer.addEventListener('load', () => {
+    // Check if model is already loaded
+    if (modelViewer.loaded) {
         const loadingScreen = document.getElementById('loading-screen');
-        const loadingVideo = document.getElementById('loading-video');
         loadingScreen.classList.add('hidden');
-        loadingVideo.pause();
-    });
+    } else {
+        // Hide loading screen when the model is loaded
+        modelViewer.addEventListener('load', () => {
+            const loadingScreen = document.getElementById('loading-screen');
+            loadingScreen.classList.add('hidden');
+        });
+    }
 
-    // Show loading screen if there's an error loading the model
+    // Add error handling with timeout
+    let loadTimeout = setTimeout(() => {
+        const loadingScreen = document.getElementById('loading-screen');
+        if (!modelViewer.loaded) {
+            console.error('Model loading timeout');
+            loadingScreen.classList.remove('hidden');
+        }
+    }, 30000); // 30 second timeout
+
     modelViewer.addEventListener('error', () => {
         console.error('Error loading model');
         const loadingScreen = document.getElementById('loading-screen');
         loadingScreen.classList.remove('hidden');
+        clearTimeout(loadTimeout);
     });
 
     // Add these functions after your other function declarations
@@ -294,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const validRooms = Array.from(document.querySelectorAll('.room-button'))
             .map(button => parseInt(button.dataset.room))
             .filter(num => !isNaN(num) && num !== 0) // Exclude room 0
-            // .sort((a, b) => a - b);
+            // .sort((a, b) => a - b); // this is for room order
         
         // Find current index and calculate next room
         const currentIndex = validRooms.indexOf(parseInt(currentRoom));
